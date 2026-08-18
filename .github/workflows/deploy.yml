@@ -13,7 +13,7 @@ permissions:
 jobs:
   build:
     name: Build Angular
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
   
     steps:
 
@@ -40,7 +40,7 @@ jobs:
   deploy:
     name: Deploy to Github Pages
     needs: build
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
 
     environment:
       name: github-pages
