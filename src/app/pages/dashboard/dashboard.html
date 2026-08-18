@@ -1,0 +1,104 @@
+<div class="dashboard-container">
+    <!--Contenido principal del dashboard-->
+    <main class="content">
+        <div class="header">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Panel principal del sistema</p>
+            </div>
+
+            <div class="user-info">
+                <strong>{{usuario}}</strong>
+                <span>{{rol}}</span>
+
+            </div>
+        </div>
+        <!--Tarjetas de informacion-->
+        <div class="cards">
+            <div class="card">
+                <h3>Usuarios</h3>
+                <p>{{estadisticas.usuarios}}</p>
+            </div>
+            <div class="card">
+                <h3>Roles</h3>
+                <p>{{estadisticas.roles}}</p>
+            </div>
+            <div class="card">
+                <h3>Cursos</h3>
+                <p>{{estadisticas.cursos}}</p>
+            </div>
+        </div>
+        <!--Grafica-->
+        <section class="workspace">
+            <h2>Actividad mensual</h2>
+            <p>Representacion grafica utilizando unicamente
+                HTML,CSS y angular
+            </p>
+
+            <div class="chart">
+                @for(item of grafica; track item.mes){
+                    <div class="bar-container">
+                        <div class="bar" [style.height.%]="item.valor">
+                        </div>
+                        <span>{{item.mes}}</span>
+                    </div>
+                }
+            </div>
+        </section>
+        <!--Tabla-->
+        <section class="workspaces">
+
+            <h2>Ultimos usuarios registrados</h2>
+            <p>Total Registrados:
+                <strong>{{obtenerTotalUsuarios()}}</strong>
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (usuario of usuarios; track usuario.id) {
+                        <tr>
+                            <td>
+                                {{usuario.id}}
+                            </td>
+                            <td>
+                                {{usuario.nombre}}
+                            </td>
+                            <td>
+                                {{usuario.correo}}
+                            </td>
+                            <td>{{usuario.rol}}</td>
+                            <td>
+                                {{usuario.estado}}
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+        <section class="workspace">
+            <h2>Area de trabajo</h2>
+            <p>
+                Desde este panel podran administrar la informacion del sistema,
+                gestionar usuarios, consultar reportes y acceder a las diferentes
+                funcionalidades disponibles.
+            </p>
+
+            <button
+                type="button"
+                (click)="mostrarMensaje()"
+            >
+                Mostrar mensaje
+            </button>
+        </section>
+    </main>
+    
+</div>
